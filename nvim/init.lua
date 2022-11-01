@@ -28,13 +28,13 @@ require('telescope_keys')
 
 require'nvim-treesitter.configs'.setup {
   -- One of "all", "maintained" (parsers with maintainers), or a list of languages
-  ensure_installed = "maintained",
+  ensure_installed = "all",
 
   -- Install languages synchronously (only applied to `ensure_installed`)
   sync_install = false,
 
   -- List of parsers to ignore installing
-  ignore_install = { "javascript" },
+  -- ignore_install = { "javascript" },
 
   highlight = {
     -- `false` will disable the whole extension
@@ -56,39 +56,42 @@ vim.cmd[[source /home/gonzalo/.config/nvim/coc.vim]]
 vim.cmd[[nnoremap <silent> <C-k><C-B> :NERDTreeToggle<CR>]]
 
 -- customize dracula color palette
-vim.g.dracula_colors = {
-  bg = "#0D1F2D",
-  fg = "#EAF0FC",
-  selection = "#EC4C5E",
-  comment = "#6272A4",
-  red = "#F00038",
-  orange = "#F74E75",
-  yellow = "#F6F14F",
-  green = "#5DFF10",
-  purple = "#5645AA",
-  cyan = "#00FFFF",
-  pink = "#FF10CA",
-  bright_red = "#F1315E",
-  bright_green = "#7DFF3E",
-  bright_yellow = "#FFFB74",
-  bright_blue = "#7465C0",
-  bright_magenta = "#FF3ED4",
-  bright_cyan = "#60FDFD",
-  bright_white = "#EAF0FC",
-  menu = "#21222C",
-  visual = "#3E4452",
-  gutter_fg = "#4B5263",
-  nontext = "#3B4048",
-  white = "#C5D3EF",
-  black = "#282A2E",
-}
--- show the '~' characters after the end of buffers
-vim.g.dracula_show_end_of_buffer = true
--- use transparent background
-vim.g.dracula_transparent_bg = true
--- set custom lualine background color
-vim.g.dracula_lualine_bg_color = "#44475a"
--- set italic comment
-vim.g.dracula_italic_comment = true
+local dracula = require("dracula")
+dracula.setup({
+    colors = {
+        bg = "#0D1F2D",
+        fg = "#EAF0FC",
+        selection = "#EC4C5E",
+        comment = "#6272A4",
+        red = "#F00038",
+        orange = "#F74E75",
+        yellow = "#F6F14F",
+        green = "#5DFF10",
+        purple = "#5645AA",
+        cyan = "#00FFFF",
+        pink = "#FF10CA",
+        bright_red = "#F1315E",
+        bright_green = "#7DFF3E",
+        bright_yellow = "#FFFB74",
+        bright_blue = "#7465C0",
+        bright_magenta = "#FF3ED4",
+        bright_cyan = "#60FDFD",
+        bright_white = "#EAF0FC",
+        menu = "#21222C",
+        visual = "#3E4452",
+        gutter_fg = "#4B5263",
+        nontext = "#3B4048",
+        white = "#C5D3EF",
+        black = "#282A2E",
+    },
+      -- show the '~' characters after the end of buffers
+      show_end_of_buffer = true, -- default false
+      -- use transparent background
+      transparent_bg = true, -- default false
+      -- set custom lualine background color
+      lualine_bg_color = "#44475a", -- default nil
+      -- set italic comment
+      italic_comment = true, -- default false
+})
 
 vim.cmd[[colorscheme dracula]]
